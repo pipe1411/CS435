@@ -12,7 +12,7 @@ public class ArrayLongIntList implements LongIntList<ArrayEntry> {
 
 	@Override
 	public void insertFirst(int value) {
-		if((entries.length - n) == 1)
+		if((size()/entries.length) >= .75)
 			resize();
 		
 		if(isEmpty()) {
@@ -39,7 +39,7 @@ public class ArrayLongIntList implements LongIntList<ArrayEntry> {
 
 	@Override
 	public void insertLast(int value) {
-		if((entries.length - size()) == 1)
+		if((size()/entries.length) >= .75)
 			resize();
 		
 		if(size() > 0)
@@ -122,7 +122,7 @@ public class ArrayLongIntList implements LongIntList<ArrayEntry> {
 		//entries[n].setNext(tmp);
 		for(int i = 0; i < entries.length; i++)
 			tmp[i] = entries[i];
-		entries[n] = tmp[0];
+		entries = tmp;
 	}
 
 }
